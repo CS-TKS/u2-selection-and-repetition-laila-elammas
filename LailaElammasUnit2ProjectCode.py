@@ -4,25 +4,25 @@ answers = []
 score = []
 
 h1 = "Erase the roots of economic suffering"
-h2 = "secure nourishment from field to fork"
-h3 = "safeguard lives through care and prevention"
+h2 = "Secure nourishment from field to fork"
+h3 = "Safeguard lives through care and prevention"
 h4 = "unlock minds through lifelong learning"
-h5 = "balance the scales for all identities"
-h6 = "turn the tap for dignity and hygiene"
-h7 = "power progress with sustainability"
-h8 = "drive opportunity without exploitation"
-h9 = "build smarter and connect further"
-h10 = "narrow the divides within and beyond borders"
-h11 = "rethink urban life for resilience"
-h12 = "consume wisely and produce sustainably"
-h13 = "defend the future from rising threats"
-h14 = "shield the blue world beneath"
-h15 = "guard the green and all who dwell there"
-h16 = "stand for fairness and fight corruption"
-h17 = "link efforts for global progress"
+h5 = "Balance the scales for all identities"
+h6 = "Turn the tap for dignity and hygiene"
+h7 = "Power progress with sustainability"
+h8 = "Drive opportunity without exploitation"
+h9 = "Build smarter and connect further"
+h10 = "Narrow the divides within and beyond borders"
+h11 = "Rethink urban life for resilience"
+h12 = "Consume wisely and produce sustainably"
+h13 = "Defend the future from rising threats"
+h14 = "Shield the blue world beneath"
+h15 = "Guard the green and all who dwell there"
+h16 = "Stand for fairness and fight corruption"
+h17 = "Link efforts for global progress"
 
 c1 = "No poverty"
-c2 = "Zero poverty"
+c2 = "Zero hunger"
 c3 = "Good health and well being"
 c4 = "Quality education"
 c5 = "Gender equality"
@@ -39,16 +39,36 @@ c15 = "life on land"
 c16 = "Peace, justice and strong institutions"
 c17 = "Partnership for the goals"
 
-allHints = [h1, h2, h3, h4, h5, h6, h7, h8, h9, h10, h11, h12, h13, h14, h15 ,h16, h17]
+allHints = [h1, h2, h3, h4, h5, h6, h7, h8, h9, h10, h11, h12, h13, h14, h15, h16, h17]
 corrections = [c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17]
 
 print("Welcome to the SDG guessing game!")
 print("The goal of this game is to guess what each SDG is based on the hint provided.")
 print("You will get your score at the end of the game and if you failed or passed.")
 print("If you want to exit the game write 'END' Good luck!")
-
+print(" ")
+print(" ")
 while answers != 'END':
-    for _ in range(17):
-        print("Here is your hint: ", [allHints])
-        input("Guess the SDG name: ")
+    for hint in allHints:
+        print("Here is your hint: ", hint)
+        answer = input("Guess the SDG name: ")
+        answers.append(answer)
+        if answer != corrections:
+            print("Your answer is incorrect")
+            print("The correct answer is ", corrections)
+            score.append('incorrect')
+        elif answer == corrections:
+            print("Your answer is correct")
+            score.append('correct')
+    if answers == 'END':
+        break
 
+if 'incorrect' >= 8:
+    print("You failed the quizz")
+else:
+    print("You passed the quizz")
+
+print("Here are your results: ")
+print(" ")
+print(score)
+print(answers)
