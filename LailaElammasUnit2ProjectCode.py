@@ -48,27 +48,30 @@ print("You will get your score at the end of the game and if you failed or passe
 print("If you want to exit the game write 'END' Good luck!")
 print(" ")
 print(" ")
-while answers != 'END':
-    for hint in allHints:
-        print("Here is your hint: ", hint)
+
+playAgain = "Yes"
+
+while playAgain != 'No':
+    for hintIndex in range(len(allHints)):
+        print("Here is your hint: ", allHints[hintIndex])
         answer = input("Guess the SDG name: ")
         answers.append(answer)
-        if answer != corrections:
+        if answer != corrections[hintIndex]:
             print("Your answer is incorrect")
-            print("The correct answer is ", corrections)
+            print("The correct answer is ", corrections[hintIndex])
             score.append('incorrect')
-        elif answer == corrections:
+        elif answer == corrections[hintIndex]:
             print("Your answer is correct")
             score.append('correct')
-    if answers == 'END':
-        break
+        if answer == 'END':
+            break
 
-if 'incorrect' >= 8:
-    print("You failed the quizz")
-else:
-    print("You passed the quizz")
-
-print("Here are your results: ")
-print(" ")
-print(score)
-print(answers)
+    if score.count('incorrect') >= 8:
+        print("You failed the quizz")
+        playAgain = input("Would you like to play again to get a higher score?")
+    else:
+        print("You passed the quizz")
+        print("Here are your results: ")
+        print(" ")
+        print(score)
+        print(answers)
